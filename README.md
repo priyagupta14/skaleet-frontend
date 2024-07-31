@@ -1,5 +1,5 @@
 # skaleet-frontend-technical-test
-
+TEST
 
 
 ## Getting started
