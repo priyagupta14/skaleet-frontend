@@ -2,11 +2,28 @@ import React from 'react';
 import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
 
 import { useTransactions } from './TransactionContext';
+import { AppNavigationProp } from './App';
 
-const HomeScreen = ({ navigation }) => {
+
+const HomeScreen = ({
+  navigation,
+}: {
+  navigation: AppNavigationProp;
+}) => {
   const { transactions, balance } = useTransactions();
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({
+    item,
+  }: {
+    item: {
+      id: string;
+      amount: number;
+      account: {
+        name: string;
+        iban: string;
+      };
+    };
+  }) => (
     <View style={styles.item}>
       <Text style={styles.itemText}>Transaction ID: {item.id}</Text>
       <Text style={styles.itemText}>Amount: ${item.amount.toFixed(2)}</Text>
@@ -20,21 +37,27 @@ const HomeScreen = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.balanceText}>
-        Current Balance: ${balance.toFixed(2)}
-      </Text>
-      <Button
-        title="Add Transaction"
-        onPress={() => navigation.navigate('Transaction')}
-      />
-      <FlatList
-        data={transactions}
-        keyExtractor={item => item.id.toString()}
-        renderItem={renderItem}
-        contentContainerStyle={styles.listContainer}
-      />
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.balanceText}>
+          Current Balance: ${balance.toFixed(2)}
+        </Text>
+        <Button
+          title="Add Beneficiary"
+          onPress={() => navigation.navigate('Create Beneficiary')}
+        />
+        <Button
+          title="Add Transaction"
+          onPress={() => navigation.navigate('Transaction')}
+        />
+        <FlatList
+          data={transactions}
+          keyExtractor={item => item.id.toString()}
+          renderItem={renderItem}
+          contentContainerStyle={styles.listContainer}
+        />
+      </View>
+    </>
   );
 };
 
