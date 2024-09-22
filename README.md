@@ -20,3 +20,16 @@ Note: you have free rein in how you want to implement this test, give it you bes
 Please share with us your Git repository where you have stored your implemented solution. Document all the commands needed to install and launch this project, excluding the installation of any external SDKs/platforms, our focus will remain strictly on this project.
 
 We hope that you will enjoy taking this test, best of luck!
+
+# Steps to Run the Project
+
+1. Install dependencies 
+2. Run Metro using, ```npm run start```
+3. Run the application of either of the platform using ```npm run android``` or ```npm run ios```
+
+
+# User Flow
+1. Upon opening the application, the user will be presented with two buttons: "Add Beneficiary" and "Add Transaction".
+2. To proceed, the user must add a beneficiary. At least one beneficiary is required before any transactions can be made.
+3. To initiate a transaction, the user selects a beneficiary from a dropdown menu. The name and IBAN fields will be auto-populated as read-only values. The user then enters the amount and submits the transaction.
+4. Once the transaction is completed, the user will be redirected to the home screen, where the transaction will be listed.
